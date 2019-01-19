@@ -3,7 +3,7 @@ import socket
 import subprocess
 
 
-host = '192.168.1.120'
+host = 'PLEASE ENTER YOUR HOST MACHINES IP'
 port = 4444
 s = socket.socket()
 s.connect((host, port))
